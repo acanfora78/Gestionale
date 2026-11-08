@@ -1,0 +1,173 @@
+/**
+ * Tutti i lavori del portfolio.
+ *
+ * Per aggiungere un lavoro: copia un oggetto qui sotto, cambia i campi
+ * e lancia `npm run screenshots` per generare le immagini.
+ * Leggi il README per i dettagli.
+ */
+
+export type Immagine = {
+  /** Percorso dentro /public, es. "/works/vs-shop/desktop.jpg" */
+  src: string;
+  alt: string;
+  tipo: "desktop" | "mobile";
+  width: number;
+  height: number;
+};
+
+export type Work = {
+  /** Usato nell'URL: /lavori/[slug] e nella cartella /public/works/[slug] */
+  slug: string;
+  nome: string;
+  settore: string;
+  /** URL del sito live. Lascia "TODO_URL" se non c'è ancora. */
+  url: string;
+  piattaforma: string;
+  servizi: string[];
+  /** Una riga, mostrata nella card. */
+  descrizioneBreve: string;
+  /** Testo della pagina case study. Ogni elemento è un paragrafo. */
+  descrizione: string[];
+  /** Obiettivo del cliente, mostrato nel case study. */
+  obiettivo: string;
+  /** Cosa abbiamo fatto, elenco puntato nel case study. */
+  cosaAbbiamoFatto: string[];
+  immagini: Immagine[];
+  inEvidenza: boolean;
+};
+
+/** Dimensioni degli screenshot generati da scripts/screenshots.ts */
+export const SCREENSHOT = {
+  desktop: { width: 1440, height: 900 },
+  mobile: { width: 390, height: 844 },
+} as const;
+
+/** Genera la lista standard di immagini prodotta dallo script. */
+function screenshots(slug: string, nome: string): Immagine[] {
+  const d = SCREENSHOT.desktop;
+  const m = SCREENSHOT.mobile;
+  return [
+    { src: `/works/${slug}/desktop.jpg`, alt: `${nome}: homepage su desktop`, tipo: "desktop", ...d },
+    { src: `/works/${slug}/desktop-2.jpg`, alt: `${nome}: sezione interna su desktop`, tipo: "desktop", ...d },
+    { src: `/works/${slug}/mobile.jpg`, alt: `${nome}: homepage su smartphone`, tipo: "mobile", ...m },
+    { src: `/works/${slug}/mobile-2.jpg`, alt: `${nome}: sezione interna su smartphone`, tipo: "mobile", ...m },
+  ];
+}
+
+export const works: Work[] = [
+  {
+    slug: "vs-shop",
+    nome: "VS Shop",
+    settore: "Moda donna",
+    url: "https://vs-shop.it",
+    piattaforma: "Shopify",
+    servizi: ["E-commerce Shopify", "Web Design"],
+    descrizioneBreve:
+      "Boutique di abbigliamento donna a Scafati (SA): dal negozio fisico allo shop online.",
+    descrizione: [
+      "VS Shop è una boutique di abbigliamento donna a Scafati (SA), con negozio fisico e una clientela che la segue da vicino.",
+      "Abbiamo portato il negozio online con un e-commerce Shopify che apre con un video in hero, organizza il catalogo per categorie e accetta il pagamento alla consegna, con spedizione in tutta Italia.",
+    ],
+    obiettivo:
+      "Vendere online oltre Scafati, mantenendo lo stile della boutique e un acquisto semplice anche per chi preferisce pagare alla consegna.",
+    cosaAbbiamoFatto: [
+      "E-commerce su Shopify",
+      "Hero con video",
+      "Catalogo organizzato per categorie",
+      "Pagamento alla consegna",
+      "Spedizione in tutta Italia",
+    ],
+    immagini: screenshots("vs-shop", "VS Shop"),
+    inEvidenza: true,
+  },
+  {
+    slug: "sudditalia",
+    nome: "Sudditalia",
+    settore: "Streetwear & denim",
+    url: "https://sudditalia.it",
+    piattaforma: "Shopify",
+    servizi: ["E-commerce Shopify", "Web Design"],
+    descrizioneBreve:
+      "Brand streetwear e denim 100% Made in Italy, con collezioni stagionali ed edizioni limitate.",
+    descrizione: [
+      "Sudditalia è un brand streetwear e denim “100% Made in Italy”.",
+      "L'e-commerce Shopify si apre con un video, presenta le collezioni stagionali e le edizioni limitate, e affianca allo shop un blog e il collegamento con i social.",
+    ],
+    obiettivo:
+      "Dare al brand uno shop con un'identità forte, capace di raccontare le collezioni e spingere le uscite in edizione limitata.",
+    cosaAbbiamoFatto: [
+      "E-commerce su Shopify",
+      "Video di apertura",
+      "Collezioni stagionali",
+      "Sezione edizioni limitate",
+      "Blog",
+      "Collegamento con i social",
+    ],
+    immagini: screenshots("sudditalia", "Sudditalia"),
+    inEvidenza: true,
+  },
+  {
+    slug: "korme",
+    nome: "Korme",
+    settore: "Arredo outdoor",
+    // TODO: inserire l'URL del sito Korme, poi lanciare `npm run screenshots`
+    url: "TODO_URL",
+    // TODO: confermare la piattaforma usata per Korme
+    piattaforma: "TODO_PIATTAFORMA",
+    servizi: ["E-commerce", "Web Design"],
+    descrizioneBreve: "Vendita online di lettini con piscina.",
+    descrizione: [
+      "Korme vende online lettini con piscina.",
+      // TODO: completare la descrizione del progetto Korme
+    ],
+    // TODO: obiettivo del cliente Korme
+    obiettivo: "TODO_OBIETTIVO",
+    cosaAbbiamoFatto: ["E-commerce", "Web Design"],
+    // Nessuno screenshot finché manca l'URL: la card mostra un segnaposto.
+    immagini: [],
+    inEvidenza: true,
+  },
+  {
+    slug: "alfano",
+    nome: "Alfano Cars",
+    settore: "Automotive",
+    url: "https://alfano.vercel.app",
+    piattaforma: "Sito su misura (Vercel)",
+    servizi: ["Web Design & Development"],
+    // TODO_DESCRIZIONE: testo proposto da FARGE dopo aver visto il sito live, da confermare
+    descrizioneBreve:
+      "Vendita e noleggio auto a Pompei dal 1985: un sito su misura per showroom, stock e servizi.",
+    // TODO_DESCRIZIONE: testo proposto, da confermare
+    descrizione: [
+      "Alfano Cars si occupa di vendita e noleggio auto a Pompei dal 1985: noleggio con o senza conducente, auto per matrimoni ed eventi, furgoni, moto ed e-bike.",
+      "Abbiamo progettato un sito su misura dal tono premium: un'intro animata, lo showroom con le vetture in sede, la sezione stock e i servizi, con la richiesta di informazioni sempre a portata di mano.",
+    ],
+    // TODO_DESCRIZIONE: obiettivo proposto, da confermare
+    obiettivo:
+      "Presentare showroom e servizi con un'immagine all'altezza delle vetture, e trasformare le visite in richieste di informazioni.",
+    // TODO_DESCRIZIONE: elenco proposto in base al sito live, da confermare
+    cosaAbbiamoFatto: [
+      "Design e sviluppo su misura",
+      "Intro animata",
+      "Showroom con le vetture in sede",
+      "Sezione stock auto",
+      "Pagina servizi: vendita, noleggio, cerimonie",
+      "Richiesta informazioni e contatti",
+    ],
+    immagini: screenshots("alfano", "Alfano Cars"),
+    inEvidenza: true,
+  },
+];
+
+export function hasUrl(work: Work): boolean {
+  return /^https?:\/\//.test(work.url);
+}
+
+export function getWork(slug: string): Work | undefined {
+  return works.find((w) => w.slug === slug);
+}
+
+/** Lavori in evidenza prima, poi gli altri, nell'ordine del file. */
+export function getWorksOrdered(): Work[] {
+  return [...works].sort((a, b) => Number(b.inEvidenza) - Number(a.inEvidenza));
+}
