@@ -36,7 +36,9 @@ Se il sito non ha ancora un URL, metti `url: "TODO_URL"` e `immagini: []`: la ca
 Campi facoltativi:
 - `logo`: SVG chiaro del cliente (es. `/works/korme/logo.svg`). Senza screenshot, la copertina mostra il logo.
 - `tipo`: etichetta del progetto, es. `"Web app"`.
-- `illustrazione: "prenotazione-lettini"`: copertina con schema della piscina e telefono con l'app (sempre etichettata "Schema illustrativo"). Nel case study aggiunge la sezione "L'applicazione". Qualsiasi campo testuale che inizia con `TODO` non viene mostrato nel case study.
+- `illustrazione: "prenotazione-lettini"`: copertina con schema della piscina e telefono con l'app (sempre etichettata "Schema illustrativo"). Nel case study aggiunge la sezione "L'applicazione".
+
+Qualsiasi campo testuale che inizia con `TODO` non viene mostrato nel case study.
 
 ## Rifare gli screenshot
 
