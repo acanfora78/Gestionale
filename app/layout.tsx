@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Cursor } from "@/components/Cursor";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -40,8 +41,19 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="it" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+    <html lang="it" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        {/* L'intro della home si vede una sola volta per sessione */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('farge-intro'))document.documentElement.setAttribute('data-intro-seen','');sessionStorage.setItem('farge-intro','1')}catch(e){}",
+          }}
+        />
+      </head>
       <body className="flex min-h-dvh flex-col">
+        <div className="scroll-progress" aria-hidden="true" />
+        <Cursor />
         <a
           href="#contenuto"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-accent focus:px-4 focus:py-2"

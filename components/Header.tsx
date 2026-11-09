@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AutoHide } from "./AutoHide";
 import { Logo } from "./Logo";
 
 const nav = [
@@ -10,15 +11,20 @@ const nav = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line/60 bg-ink/85 backdrop-blur-md">
+    <AutoHide>
+    <header className="border-b border-line/60 bg-ink/85 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between gap-6">
         <Logo />
         <nav aria-label="Principale" className="hidden md:block">
           <ul className="flex items-center gap-8 text-sm text-muted">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="transition-colors hover:text-paper">
+                <Link href={item.href} className="group relative transition-colors hover:text-paper">
                   {item.label}
+                  <span
+                    aria-hidden="true"
+                    className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-accent transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100"
+                  />
                 </Link>
               </li>
             ))}
@@ -32,5 +38,6 @@ export function Header() {
         </Link>
       </div>
     </header>
+    </AutoHide>
   );
 }

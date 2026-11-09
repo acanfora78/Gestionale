@@ -221,8 +221,8 @@ export default async function CaseStudy({ params }: PageProps<"/lavori/[slug]">)
               {mobile.length > 0 && (
                 <ul className="mb-8 grid grid-cols-2 gap-4 md:mb-12 md:gap-8">
                   {mobile.map((img) => (
-                    <li key={img.src} className="flex justify-center bg-surface p-4 md:p-12">
-                      <figure className="w-full max-w-[320px]">
+                    <li key={img.src} data-cursor="view" className="flex justify-center bg-surface p-4 md:p-12">
+                      <figure className="wipe w-full max-w-[320px]">
                         <div className="overflow-hidden rounded-[1.25rem] border border-line md:rounded-[2rem]">
                           <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(min-width: 768px) 320px, 38vw" className="h-auto w-full" />
                         </div>
@@ -237,7 +237,7 @@ export default async function CaseStudy({ params }: PageProps<"/lavori/[slug]">)
                 <ul className="grid gap-4 md:gap-8">
                   {desktop.slice(1).map((img) => (
                     <li key={img.src}>
-                      <figure>
+                      <figure className="wipe">
                         <Image
                           src={img.src}
                           alt={img.alt}

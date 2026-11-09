@@ -10,8 +10,9 @@ import { whatsappLink } from "@/data/site";
  * (es. Resend con una Server Action, oppure Formspree) in handleSubmit.
  */
 
+// La linea rossa sotto il campo si allunga quando ci scrivi.
 const field =
-  "w-full border-0 border-b border-line bg-transparent px-0 py-3 text-lg text-paper placeholder:text-muted/70 focus:border-accent focus:ring-0 focus:outline-none";
+  "w-full border-0 border-b border-line bg-transparent bg-[linear-gradient(var(--color-accent),var(--color-accent))] bg-[length:0%_2px] bg-[position:0_100%] bg-no-repeat px-0 py-3 text-lg text-paper transition-[background-size] duration-500 ease-out placeholder:text-muted/70 focus:bg-[length:100%_2px] focus:ring-0 focus:outline-none";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);

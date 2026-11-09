@@ -41,7 +41,7 @@ export function Footer() {
       <div aria-hidden="true" className="container-x mt-16 select-none md:mt-24">
         <p className="mb-4 text-center text-[11px] font-semibold tracking-[0.4em] uppercase">Fine</p>
         {/* Lettere via CSS: puramente decorative */}
-        <div className="display -mb-[0.12em] flex items-baseline justify-center text-[24vw] leading-[0.8] text-paper/[0.07]">
+        <div className="rise-on-scroll display -mb-[0.12em] flex items-baseline justify-center text-[24vw] leading-[0.8] text-paper/[0.07]">
           <span data-t="F" className="before:content-[attr(data-t)]" />
           <svg viewBox="0 0 10 12" className="mx-[0.03em] h-[0.72em] w-[0.62em] text-accent/50" fill="currentColor">
             <path d="M0 12 4 0h2l4 12H7.6L5 3.6 2.4 12Z" />

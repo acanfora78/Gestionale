@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
+import { Intro } from "@/components/Intro";
 import { ContactForm } from "@/components/ContactForm";
 import { CTA } from "@/components/CTA";
 import { Method } from "@/components/Method";
@@ -11,20 +12,34 @@ import { getWorksOrdered } from "@/data/works";
 
 const settori = ["Ristoranti", "Negozi", "Studi medici", "Palestre", "Concessionarie", "Piscine e lidi", "PMI", "E-commerce", "Brand"];
 
+const nastro = ["Web design", "E-commerce", "Web app", "Branding", "Social", "Video", "AI & automazioni"];
+
 export default function Home() {
   const works = getWorksOrdered();
 
   return (
     <>
+      <Intro />
       <Hero />
 
-      <div aria-hidden="true" className="overflow-hidden border-y border-line py-5">
-        <div>
-          <div className="flex w-max animate-[marquee_40s_linear_infinite] gap-10 motion-reduce:animate-none">
+      {/* Due nastri incrociati che scorrono in direzioni opposte */}
+      <div aria-hidden="true" className="relative overflow-hidden py-14 md:py-20">
+        <div className="-mx-4 -rotate-2 bg-accent py-4">
+          <div className="flex w-max animate-[marquee_35s_linear_infinite] gap-10 motion-reduce:animate-none">
             {[...settori, ...settori].map((s, i) => (
-              <span key={i} className="flex items-center gap-10 font-display text-sm tracking-[0.2em] text-muted uppercase">
+              <span key={i} className="flex items-center gap-10 font-display text-lg font-bold tracking-[0.15em] text-paper uppercase md:text-2xl">
                 {s}
-                <span className="text-accent">✦</span>
+                <span className="text-ink">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="-mx-4 -mt-3 rotate-[1.5deg] border-y border-line bg-ink py-4">
+          <div className="flex w-max animate-[marquee_45s_linear_infinite_reverse] gap-10 motion-reduce:animate-none">
+            {[...nastro, ...nastro].map((s, i) => (
+              <span key={i} className="flex items-center gap-10 font-display text-lg tracking-[0.15em] text-muted uppercase md:text-2xl">
+                {s}
+                <span className="text-accent">●</span>
               </span>
             ))}
           </div>
@@ -53,11 +68,7 @@ export default function Home() {
       <Section
         id="metodo"
         eyebrow="Capitolo 03 — Metodo"
-        title={
-          <>
-            La demo è <span className="text-accent">gratuita</span>.
-          </>
-        }
+        title="La demo è *gratuita*."
         intro="Non ti chiediamo di fidarti di un preventivo. Ti facciamo vedere il risultato prima."
         className="border-t border-line"
       >

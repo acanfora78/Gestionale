@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { hasUrl, type Work } from "@/data/works";
 import { Tag } from "./Tag";
+import { Tilt } from "./Tilt";
 import { WorkCover } from "./WorkCover";
 
 /**
@@ -23,13 +24,17 @@ export function WorkCard({
 
   return (
     <article className="group relative flex h-full flex-col">
+      <Tilt>
       <div
-        className={`relative overflow-hidden border border-line bg-surface ${
+        data-cursor="view"
+        className={`wipe relative overflow-hidden border border-line bg-surface ${
           wide ? "aspect-[4/5] sm:aspect-[16/10] md:aspect-[21/9]" : "aspect-[4/5] sm:aspect-[16/10]"
         }`}
       >
+        <div className="zoom-out-on-scroll absolute inset-0">
         <div className="absolute inset-0 transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]">
           <WorkCover work={work} sizes={wide ? "100vw" : "(min-width: 768px) 50vw, 100vw"} />
+        </div>
         </div>
 
         {/* Tutto il fotogramma porta al case study (il link accessibile è il titolo) */}
@@ -51,7 +56,7 @@ export function WorkCard({
           <h3 className={`display ${wide ? "text-[clamp(2.75rem,9vw,8rem)]" : "text-[clamp(2.75rem,7vw,5rem)]"}`}>
             <Link
               href={`/lavori/${work.slug}`}
-              className="pointer-events-auto"
+              className="glitch pointer-events-auto inline-block"
             >
               {work.nome}
             </Link>
@@ -63,6 +68,7 @@ export function WorkCard({
           className="absolute bottom-0 left-0 z-[3] h-1 w-0 bg-accent transition-[width] duration-700 ease-out group-hover:w-full"
         />
       </div>
+      </Tilt>
 
       <div className="relative z-10 flex flex-1 flex-col gap-4 pt-5 md:flex-row md:items-start md:justify-between md:gap-10">
         <p className="max-w-xl text-muted">{work.descrizioneBreve}</p>

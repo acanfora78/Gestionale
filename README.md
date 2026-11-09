@@ -57,3 +57,14 @@ Se vuoi usare un Chromium già installato: `CHROMIUM_PATH=/percorso/chromium npm
 ## Il form contatti
 
 Il form oggi non ha un backend: all'invio apre WhatsApp con il messaggio già compilato. Per ricevere le richieste via email va collegato un servizio (es. Resend o Formspree) in `components/ContactForm.tsx`.
+
+## Animazioni
+
+Quasi tutte sono in CSS (`app/globals.css`, sezioni "Cinema" e "Animazioni extra"); con "riduci movimento" attivo nel sistema si spengono.
+
+- Intro 3-2-1 della home: `components/Intro.tsx`, una volta per sessione (script in `app/layout.tsx`).
+- Sipario tra le pagine: `app/template.tsx`.
+- Cursore, luce che segue il mouse: `components/Cursor.tsx`. Sui lavori il cursore mostra "Guarda" (`data-cursor="view"`).
+- Pulsanti magnetici: `components/Magnetic.tsx`. Card inclinabili: `components/Tilt.tsx`.
+- Titoli lettera per lettera: `components/SplitText.tsx` (parole tra `*asterischi*` in rosso). Etichette che si decodificano: `components/Scramble.tsx`.
+- Metodo in carrellata orizzontale (desktop, Chrome/Edge/Safari recenti): classi `h-scroll*` in `globals.css`.
