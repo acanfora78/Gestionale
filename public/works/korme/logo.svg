@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296 80" role="img" aria-labelledby="t">
+  <title id="t">Korme</title>
+  <defs>
+    <clipPath id="o"><circle cx="86" cy="40" r="20.5"/></clipPath>
+  </defs>
+  <g fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="miter" stroke-linecap="square">
+    <path d="M12 16V64M46 16 15 40 46 64"/>
+    <circle cx="86" cy="40" r="24"/>
+    <path d="M126 64V16h20a14 14 0 0 1 0 28h-20M146 44l17 20"/>
+    <path d="M180 64V16l24 30 24-30v48"/>
+    <path d="M282 16h-34v48h34M248 40h28"/>
+  </g>
+  <path clip-path="url(#o)" d="M58 46q7-6 14 0t14 0 14 0 14 0V70H58Z" fill="#2ec4d6"/>
+</svg>

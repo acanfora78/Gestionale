@@ -36,7 +36,7 @@ export function whatsappLink(testo: string = whatsappMessaggio): string {
 export const servizi = [
   {
     titolo: "Web Design & Development",
-    testo: "Siti veloci, su misura, pensati prima per il telefono. Niente template riciclati.",
+    testo: "Siti e web app veloci, su misura, pensati prima per il telefono. Niente template riciclati.",
   },
   {
     titolo: "E-commerce Shopify",

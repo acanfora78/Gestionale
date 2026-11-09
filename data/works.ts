@@ -33,6 +33,15 @@ export type Work = {
   /** Cosa abbiamo fatto, elenco puntato nel case study. */
   cosaAbbiamoFatto: string[];
   immagini: Immagine[];
+  /**
+   * Logo del cliente (SVG chiaro, in /public). Facoltativo.
+   * Se il lavoro non ha screenshot, la copertina mostra il logo.
+   */
+  logo?: string;
+  /** Tipo di progetto mostrato come etichetta, es. "Web app". Facoltativo. */
+  tipo?: string;
+  /** Illustrazione da usare in copertina quando non ci sono screenshot. Facoltativo. */
+  illustrazione?: "prenotazione-lettini";
   inEvidenza: boolean;
 };
 
@@ -109,21 +118,34 @@ export const works: Work[] = [
   {
     slug: "korme",
     nome: "Korme",
-    settore: "Arredo outdoor",
-    // TODO: inserire l'URL del sito Korme, poi lanciare `npm run screenshots`
+    settore: "Piscina · Prenotazioni",
+    tipo: "Web app",
+    // TODO: inserire l'URL dell'app Korme, poi lanciare `npm run screenshots korme`
     url: "TODO_URL",
-    // TODO: confermare la piattaforma usata per Korme
-    piattaforma: "TODO_PIATTAFORMA",
-    servizi: ["E-commerce", "Web Design"],
-    descrizioneBreve: "Vendita online di lettini con piscina.",
+    // TODO: confermare la tecnologia usata per l'app
+    piattaforma: "Web app di prenotazione",
+    servizi: ["Web App", "Sistema di prenotazione", "UX/UI Design"],
+    descrizioneBreve:
+      "Un'applicazione per prenotare online i lettini in piscina, direttamente dal telefono.",
+    // TODO: confermare e completare con le funzioni reali dell'app
     descrizione: [
-      "Korme vende online lettini con piscina.",
-      // TODO: completare la descrizione del progetto Korme
+      "Korme offre lettini a bordo piscina e voleva che i clienti potessero prenotarli online.",
+      "Abbiamo strutturato un'applicazione di prenotazione: il cliente sceglie il giorno, vede i lettini disponibili e prenota il suo posto online. Korme ha tutte le prenotazioni in un unico posto.",
     ],
-    // TODO: obiettivo del cliente Korme
-    obiettivo: "TODO_OBIETTIVO",
-    cosaAbbiamoFatto: ["E-commerce", "Web Design"],
-    // Nessuno screenshot finché manca l'URL: la card mostra un segnaposto.
+    // TODO: confermare l'obiettivo con il cliente
+    obiettivo:
+      "Far prenotare i lettini online in pochi tocchi e avere tutti i posti sotto controllo in un'unica app.",
+    // TODO: confermare l'elenco con le funzioni reali dell'app
+    cosaAbbiamoFatto: [
+      "Struttura e flusso dell'applicazione",
+      "Prenotazione online dei lettini",
+      "Scelta del giorno e del posto",
+      "Interfaccia pensata per lo smartphone",
+      "Logo e identità visiva",
+    ],
+    logo: "/works/korme/logo.svg",
+    illustrazione: "prenotazione-lettini",
+    // Nessuno screenshot finché manca l'URL: la copertina mostra logo e schema della piscina.
     immagini: [],
     inEvidenza: true,
   },

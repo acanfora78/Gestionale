@@ -31,7 +31,12 @@ Cerca `TODO` nel progetto per trovare tutti i segnaposto da completare.
 4. Lancia `npm run screenshots pizzeria-da-mario`.
 5. Fatto: la card compare in home, e la pagina `/lavori/pizzeria-da-mario` e la sitemap si generano da sole.
 
-Se il sito non ha ancora un URL, metti `url: "TODO_URL"` e `immagini: []`: la card mostra un segnaposto. Qualsiasi campo testuale che inizia con `TODO` non viene mostrato nel case study.
+Se il sito non ha ancora un URL, metti `url: "TODO_URL"` e `immagini: []`: la card mostra un segnaposto.
+
+Campi facoltativi:
+- `logo`: SVG chiaro del cliente (es. `/works/korme/logo.svg`). Senza screenshot, la copertina mostra il logo.
+- `tipo`: etichetta del progetto, es. `"Web app"`.
+- `illustrazione: "prenotazione-lettini"`: copertina con schema della piscina e telefono con l'app (sempre etichettata "Schema illustrativo"). Nel case study aggiunge la sezione "L'applicazione". Qualsiasi campo testuale che inizia con `TODO` non viene mostrato nel case study.
 
 ## Rifare gli screenshot
 

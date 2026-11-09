@@ -5,7 +5,7 @@ import { Logo } from "./Logo";
 export function Footer() {
   const year = 2026;
   return (
-    <footer className="border-t border-line py-12 text-sm text-muted">
+    <footer className="relative overflow-hidden border-t border-line pt-12 text-sm text-muted">
       <div className="container-x flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div className="space-y-3">
           <Logo className="text-paper" />
@@ -34,6 +34,19 @@ export function Footer() {
           <p>
             © {year} {site.nome}
           </p>
+        </div>
+      </div>
+
+      {/* Titolo di coda */}
+      <div aria-hidden="true" className="container-x mt-16 select-none md:mt-24">
+        <p className="mb-4 text-center text-[11px] font-semibold tracking-[0.4em] uppercase">Fine</p>
+        {/* Lettere via CSS: puramente decorative */}
+        <div className="display -mb-[0.12em] flex items-baseline justify-center text-[24vw] leading-[0.8] text-paper/[0.07]">
+          <span data-t="F" className="before:content-[attr(data-t)]" />
+          <svg viewBox="0 0 10 12" className="mx-[0.03em] h-[0.72em] w-[0.62em] text-accent/50" fill="currentColor">
+            <path d="M0 12 4 0h2l4 12H7.6L5 3.6 2.4 12Z" />
+          </svg>
+          <span data-t="RGE" className="before:content-[attr(data-t)]" />
         </div>
       </div>
     </footer>
