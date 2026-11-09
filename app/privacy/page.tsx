@@ -19,7 +19,7 @@ export default function Privacy() {
       <h1 className="display text-[clamp(3rem,10vw,6rem)]">Privacy</h1>
       <div className="mt-10 space-y-6 text-lg text-paper/85">
         <p>
-          Titolare del trattamento: {site.ragioneSociale}, P.IVA {site.piva}. Contatto:{" "}
+          Titolare del trattamento: {site.ragioneSociale.startsWith("TODO") ? site.nome : site.ragioneSociale}, P.IVA {site.piva}. Contatto:{" "}
           <a href={`mailto:${site.contatti.email}`} className="underline underline-offset-4 hover:text-accent">
             {site.contatti.email}
           </a>

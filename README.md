@@ -54,9 +54,11 @@ Aspetta 5 secondi per video e animazioni e prova a chiudere i banner cookie. Se 
 La prima volta su un computer nuovo serve il browser di Playwright: `npx playwright install chromium`.
 Se vuoi usare un Chromium già installato: `CHROMIUM_PATH=/percorso/chromium npm run screenshots`.
 
-## Il form contatti
+## Contatti e form
 
-Il form oggi non ha un backend: all'invio apre WhatsApp con il messaggio già compilato. Per ricevere le richieste via email va collegato un servizio (es. Resend o Formspree) in `components/ContactForm.tsx`.
+Email, WhatsApp, telefono e P.IVA sono in `data/site.ts`: cambiandoli lì si aggiornano pulsanti, form, footer e privacy.
+
+Il form non ha un server: con "Invia su WhatsApp" o "Invia per email" apre WhatsApp o l'app email di chi lo compila, con il messaggio già scritto e indirizzato a te. Chi scrive deve solo premere invia. Per ricevere le richieste in automatico, senza quel passaggio, serve un servizio email (es. Resend) collegato in `components/ContactForm.tsx`.
 
 ## Animazioni
 

@@ -12,9 +12,16 @@ export function Footer() {
           <p>{site.luogo}</p>
         </div>
         <ul className="flex flex-wrap gap-x-8 gap-y-3">
+          {site.contatti.instagram && (
+            <li>
+              <a href={site.contatti.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-paper">
+                Instagram
+              </a>
+            </li>
+          )}
           <li>
-            <a href={site.contatti.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-paper">
-              Instagram
+            <a href={`tel:+${site.contatti.whatsapp}`} className="hover:text-paper">
+              {site.contatti.telefonoVisibile}
             </a>
           </li>
           <li>
@@ -29,7 +36,6 @@ export function Footer() {
           </li>
         </ul>
         <div className="space-y-1 md:text-right">
-          {/* TODO: P.IVA reale in data/site.ts */}
           <p>P.IVA {site.piva}</p>
           <p>
             © {year} {site.nome}

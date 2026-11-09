@@ -10,18 +10,14 @@ export const site = {
     "Digital agency creativa in Campania. Siti, e-commerce, branding e contenuti per attività locali. Prima vedi la demo, poi decidi.",
   luogo: "Campania · Napoli / Scafati",
   contatti: {
-    // TODO: numero WhatsApp in formato internazionale, solo cifre (es. 393331234567)
-    whatsapp: "390000000000",
-    // TODO: numero da mostrare a schermo
-    telefonoVisibile: "+39 000 000 0000",
-    // TODO: email dello studio
-    email: "info@fargestudio.it",
-    // TODO: profilo Instagram
-    instagram: "https://www.instagram.com/TODO_INSTAGRAM",
-    instagramHandle: "@TODO_INSTAGRAM",
+    // Numero WhatsApp in formato internazionale, solo cifre
+    whatsapp: "393290211669",
+    telefonoVisibile: "+39 329 021 1669",
+    email: "morganacanfora5@gmail.com",
+    // TODO: profilo Instagram (finché è vuoto il link non compare)
+    instagram: "",
   },
-  // TODO: Partita IVA
-  piva: "TODO_PIVA",
+  piva: "06367880652",
   // TODO: ragione sociale / titolare (per la privacy policy)
   ragioneSociale: "TODO_RAGIONE_SOCIALE",
 } as const;
@@ -31,6 +27,12 @@ export const whatsappMessaggio =
 
 export function whatsappLink(testo: string = whatsappMessaggio): string {
   return `https://wa.me/${site.contatti.whatsapp}?text=${encodeURIComponent(testo)}`;
+}
+
+export const emailOggetto = "Richiesta demo gratuita";
+
+export function emailLink(testo: string = whatsappMessaggio, oggetto: string = emailOggetto): string {
+  return `mailto:${site.contatti.email}?subject=${encodeURIComponent(oggetto)}&body=${encodeURIComponent(testo)}`;
 }
 
 export const servizi = [

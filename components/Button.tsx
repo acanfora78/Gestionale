@@ -47,6 +47,16 @@ export function Button({ href, children, variant = "primary", arrow = false, ext
   );
 
   const isExternal = external ?? /^(https?:|mailto:|tel:)/.test(href);
+  // Link ad ancore (#contatti, /#lavori): <a> normale, così scorre ogni volta che lo clicchi.
+  if (href.includes("#")) {
+    return (
+      <Magnetic className="w-full sm:w-auto">
+        <a href={href} className={cls} {...rest}>
+          {content}
+        </a>
+      </Magnetic>
+    );
+  }
   if (isExternal) {
     return (
       <Magnetic className="w-full sm:w-auto">

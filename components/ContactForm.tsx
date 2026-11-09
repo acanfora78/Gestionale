@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { whatsappLink } from "@/data/site";
+import { emailLink, site, whatsappLink } from "@/data/site";
 
 /*
- * TODO: il form oggi non ha un backend. All'invio compone il messaggio
- * e apre WhatsApp con il testo già scritto (comodo da telefono).
- * Per ricevere le richieste via email collegare un servizio
- * (es. Resend con una Server Action, oppure Formspree) in handleSubmit.
+ * Il form non ha un server: compone il messaggio e lo apre
+ * su WhatsApp oppure nell'app email del visitatore, già compilato,
+ * indirizzato ai contatti in data/site.ts. Il visitatore deve solo premere "Invia".
+ * Per ricevere le richieste senza passaggi (invio diretto) servirebbe
+ * un servizio email, es. Resend con una Server Action.
  */
 
 // La linea rossa sotto il campo si allunga quando ci scrivi.
@@ -15,10 +16,12 @@ const field =
   "w-full border-0 border-b border-line bg-transparent bg-[linear-gradient(var(--color-accent),var(--color-accent))] bg-[length:0%_2px] bg-[position:0_100%] bg-no-repeat px-0 py-3 text-lg text-paper transition-[background-size] duration-500 ease-out placeholder:text-muted/70 focus:bg-[length:100%_2px] focus:ring-0 focus:outline-none";
 
 export function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState<"" | "whatsapp" | "email">("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const submitter = (e.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null;
+    const canale = submitter?.value === "email" ? "email" : "whatsapp";
     const data = new FormData(e.currentTarget);
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const testo = [
@@ -30,8 +33,13 @@ export function ContactForm() {
     ]
       .filter(Boolean)
       .join("\n");
-    window.open(whatsappLink(testo), "_blank", "noopener,noreferrer");
-    setSent(true);
+
+    if (canale === "email") {
+      window.location.href = emailLink(testo, `Richiesta demo gratuita — ${get("attivita")}`);
+    } else {
+      window.open(whatsappLink(testo), "_blank", "noopener,noreferrer");
+    }
+    setSent(canale);
   }
 
   return (
@@ -54,19 +62,38 @@ export function ContactForm() {
         <span className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Messaggio</span>
         <textarea name="messaggio" rows={3} className={`${field} resize-none`} placeholder="Raccontaci in due righe cosa ti serve" />
       </label>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"
+          name="canale"
+          value="whatsapp"
           className="group inline-flex min-h-12 items-center justify-center gap-3 bg-accent px-6 text-sm font-semibold tracking-wide uppercase transition-colors hover:bg-accent-hover"
         >
-          Richiedi la demo <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+          Invia su WhatsApp <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
         </button>
-        <p id="form-nota" className="text-sm text-muted">
-          L&apos;invio apre WhatsApp con il messaggio già pronto.
-        </p>
+        <button
+          type="submit"
+          name="canale"
+          value="email"
+          className="inline-flex min-h-12 items-center justify-center gap-3 border border-paper/30 px-6 text-sm font-semibold tracking-wide uppercase transition-colors hover:border-paper hover:bg-paper hover:text-ink"
+        >
+          Invia per email
+        </button>
       </div>
+      <p id="form-nota" className="-mt-4 text-sm text-muted">
+        Si apre WhatsApp o la tua app email con il messaggio già pronto: devi solo premere invia.
+      </p>
       <p role="status" aria-live="polite" className="text-sm text-paper">
-        {sent ? "Messaggio pronto su WhatsApp: premi invia e ti rispondiamo noi." : ""}
+        {sent === "whatsapp" && "Messaggio pronto su WhatsApp: premi invia e ti rispondiamo noi."}
+        {sent === "email" && (
+          <>
+            Email pronta: premi invia. Se non si è aperto nulla, scrivici a{" "}
+            <a href={`mailto:${site.contatti.email}`} className="underline underline-offset-4">
+              {site.contatti.email}
+            </a>
+            .
+          </>
+        )}
       </p>
     </form>
   );
