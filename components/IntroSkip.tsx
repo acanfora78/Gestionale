@@ -9,7 +9,7 @@ export function IntroSkip() {
       className="intro-skip"
       onClick={() => document.documentElement.setAttribute("data-intro-seen", "")}
     >
-      Salta intro
+      Salta l&apos;intro
     </button>
   );
 }

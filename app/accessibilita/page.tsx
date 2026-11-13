@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { LegalPage } from "@/components/Legal";
 import { site } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Accessibilità",
-  description: "L'impegno di FARGE STUDIO per un sito utilizzabile da tutti e come segnalare un problema.",
-  alternates: { canonical: "/accessibilita" },
-};
+export const metadata: Metadata = pageMetadata("/accessibilita", "Accessibilità", "L'impegno di FARGE STUDIO per un sito utilizzabile da tutti e come segnalare un problema.");
 
 /*
  * Dichiarazione volontaria: la dichiarazione di accessibilità AgID è obbligatoria

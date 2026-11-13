@@ -37,8 +37,13 @@ export function WorkCard({
         </div>
         </div>
 
-        {/* Tutto il fotogramma porta al case study (il link accessibile è il titolo) */}
-        <Link href={`/lavori/${work.slug}`} aria-hidden="true" tabIndex={-1} className="absolute inset-0 z-[1]" />
+        {/* Tutto il fotogramma porta al case study (da tastiera si usa il titolo, qui tabIndex -1 evita il doppio stop) */}
+        <Link
+          href={`/lavori/${work.slug}`}
+          aria-label={`Apri il case study di ${work.nome}`}
+          tabIndex={-1}
+          className="absolute inset-0 z-[1]"
+        />
 
         {/* Sfumature per leggere il titolo */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink from-5% via-ink/75 via-35% to-transparent to-75%" />

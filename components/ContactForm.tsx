@@ -46,33 +46,48 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="grid gap-8" aria-describedby="form-nota">
       <div className="grid gap-8 sm:grid-cols-2">
-        <label className="block">
-          <span className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Nome</span>
-          <input name="nome" required autoComplete="name" className={field} placeholder="Mario Rossi" />
-        </label>
-        <label className="block">
-          <span className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Attività</span>
-          <input name="attivita" required autoComplete="organization" className={field} placeholder="Ristorante, negozio, studio…" />
-        </label>
+        <div>
+          <label htmlFor="cf-nome" className="block text-xs font-semibold tracking-[0.2em] text-muted uppercase">
+            Nome
+          </label>
+          <input id="cf-nome" name="nome" required autoComplete="name" className={field} placeholder="Mario Rossi" />
+        </div>
+        <div>
+          <label htmlFor="cf-attivita" className="block text-xs font-semibold tracking-[0.2em] text-muted uppercase">
+            Attività
+          </label>
+          <input id="cf-attivita" name="attivita" required autoComplete="organization" className={field} placeholder="Ristorante, negozio, studio…" />
+        </div>
       </div>
-      <label className="block">
-        <span className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Telefono</span>
-        <input name="telefono" type="tel" required autoComplete="tel" inputMode="tel" className={field} placeholder="333 123 4567" />
-      </label>
-      <label className="block">
-        <span className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Messaggio</span>
-        <textarea name="messaggio" rows={3} className={`${field} resize-none`} placeholder="Raccontaci in due righe cosa ti serve" />
-      </label>
-      <label className="flex items-start gap-3 text-sm text-muted">
-        <input type="checkbox" name="privacy" required className="mt-1 h-5 w-5 shrink-0 accent-[var(--color-accent)]" />
-        <span>
+      <div>
+        <label htmlFor="cf-telefono" className="block text-xs font-semibold tracking-[0.2em] text-muted uppercase">
+          Telefono
+        </label>
+        <input id="cf-telefono" name="telefono" type="tel" required autoComplete="tel" inputMode="tel" className={field} placeholder="333 123 4567" />
+      </div>
+      <div>
+        <label htmlFor="cf-messaggio" className="block text-xs font-semibold tracking-[0.2em] text-muted uppercase">
+          Messaggio
+        </label>
+        <textarea id="cf-messaggio" name="messaggio" rows={3} className={`${field} resize-none`} placeholder="Raccontaci in due righe cosa ti serve" />
+      </div>
+      <div className="flex items-start gap-3 text-sm text-muted">
+        <input
+          id="cf-privacy"
+          type="checkbox"
+          name="privacy"
+          required
+          defaultChecked={false}
+          className="mt-1 h-5 w-5 shrink-0 accent-[var(--color-accent)]"
+        />
+        <label htmlFor="cf-privacy">
           Ho letto l&apos;
           <Link href="/privacy" className="text-paper underline underline-offset-4 hover:text-accent">
             informativa privacy
           </Link>{" "}
           e chiedo di essere ricontattato per la demo gratuita.
-        </span>
-      </label>
+        </label>
+      </div>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"

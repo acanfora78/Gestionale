@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { LegalPage } from "@/components/Legal";
 import { site } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Cookie policy",
-  description: "Quali cookie e strumenti simili usa il sito FARGE STUDIO: solo tecnici, nessuna profilazione.",
-  alternates: { canonical: "/cookie" },
-};
+export const metadata: Metadata = pageMetadata("/cookie", "Cookie policy", "Quali cookie e strumenti simili usa il sito FARGE STUDIO: solo tecnici, nessuna profilazione.");
 
 /*
  * Cookie policy (art. 122 D.Lgs. 196/2003, Linee guida del Garante del 10 giugno 2021).

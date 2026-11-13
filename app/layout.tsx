@@ -18,8 +18,8 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "FΛRGE STUDIO® — Digital agency in Campania",
-    template: "%s — FΛRGE STUDIO®",
+    default: "FΛRGE STUDIO™ — Digital agency in Campania",
+    template: "%s — FΛRGE STUDIO™",
   },
   description: site.descrizione,
   applicationName: "FARGE STUDIO",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "it_IT",
-    siteName: "FΛRGE STUDIO®",
+    siteName: "FΛRGE STUDIO™",
     url: "/",
-    title: "FΛRGE STUDIO® — Digital agency in Campania",
+    title: "FΛRGE STUDIO™ — Digital agency in Campania",
     description: site.descrizione,
   },
   twitter: { card: "summary_large_image" },

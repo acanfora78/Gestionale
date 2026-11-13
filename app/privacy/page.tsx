@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { DatiTitolare, LegalPage } from "@/components/Legal";
 import { site } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Privacy",
-  description: "Informativa sul trattamento dei dati personali ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679.",
-  alternates: { canonical: "/privacy" },
-};
+export const metadata: Metadata = pageMetadata("/privacy", "Privacy", "Informativa sul trattamento dei dati personali ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679.");
 
 /*
  * Informativa privacy (GDPR artt. 13-14, D.Lgs. 196/2003).

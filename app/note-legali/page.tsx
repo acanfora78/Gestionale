@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { DatiTitolare, LegalPage } from "@/components/Legal";
 import { site } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Note legali",
-  description: "Chi gestisce il sito FARGE STUDIO, condizioni d'uso, diritti d'autore e condizioni della demo gratuita.",
-  alternates: { canonical: "/note-legali" },
-};
+export const metadata: Metadata = pageMetadata("/note-legali", "Note legali", "Chi gestisce il sito FARGE STUDIO, condizioni d'uso, diritti d'autore e condizioni della demo gratuita.");
 
 /*
  * Note legali e condizioni d'uso.
