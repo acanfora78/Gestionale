@@ -36,6 +36,7 @@ export function Footer() {
           </p>
           {site.legale.sede && <p>{site.legale.sede}</p>}
           <p>P.IVA {site.piva}</p>
+          {site.legale.rea && <p>REA {site.legale.rea}</p>}
           {site.legale.datiSocietari && <p>{site.legale.datiSocietari}</p>}
           {site.legale.pec && <p>PEC {site.legale.pec}</p>}
         </div>
@@ -45,10 +46,10 @@ export function Footer() {
       <nav aria-label="Informazioni legali" className="container-x mt-10 border-t border-line pt-6">
         <ul className="flex flex-wrap gap-x-6 gap-y-3 text-xs tracking-wide uppercase">
           {[
-            { href: "/privacy", label: "Privacy" },
-            { href: "/cookie", label: "Cookie" },
+            { href: "/privacy", label: "Privacy Policy" },
+            { href: "/cookie", label: "Cookie Policy" },
+            { href: "/accessibilita", label: "Dichiarazione di accessibilità" },
             { href: "/note-legali", label: "Note legali" },
-            { href: "/accessibilita", label: "Accessibilità" },
           ].map((l) => (
             <li key={l.href}>
               <Link href={l.href} className="hover:text-paper">

@@ -27,6 +27,8 @@ export const site = {
     titolare: "",
     // TODO: sede legale completa (via, numero, CAP, città, provincia)
     sede: "",
+    // TODO: numero REA (es. "SA-123456") oppure "non iscritto"; vuoto = non mostrato
+    rea: "",
     // TODO: PEC, se c'è
     pec: "",
     // TODO (solo società): numero REA e capitale sociale, es. "REA SA-123456 · Cap. soc. € 10.000 i.v."

@@ -3,10 +3,10 @@ import type { ReactNode } from "react";
 import { site, titolareLegale } from "@/data/site";
 
 const pagine = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/cookie", label: "Cookie" },
-  { href: "/note-legali", label: "Note legali" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/cookie", label: "Cookie Policy" },
   { href: "/accessibilita", label: "Accessibilità" },
+  { href: "/note-legali", label: "Note legali" },
 ];
 
 /** Impaginazione comune delle pagine legali. */
@@ -52,6 +52,12 @@ export function DatiTitolare() {
         </>
       )}
       P.IVA {site.piva}
+      {l.rea && (
+        <>
+          <br />
+          REA {l.rea}
+        </>
+      )}
       {l.datiSocietari && (
         <>
           <br />
