@@ -10,15 +10,33 @@ type Props = {
   /** Stringa: entra lettera per lettera, le parole tra *asterischi* in rosso. */
   title?: string;
   intro?: ReactNode;
+  /** Numero di scena: mostra le bande letterbox e il cartello "Sc. 0X — Take 01" all'ingresso. */
+  scene?: number;
   children: ReactNode;
   className?: string;
 };
 
-export function Section({ id, eyebrow, title, intro, children, className = "" }: Props) {
+export function Section({ id, eyebrow, title, intro, scene, children, className = "" }: Props) {
   const headingId = id ? `${id}-titolo` : undefined;
   return (
-    <section id={id} aria-labelledby={title ? headingId : undefined} className={`scroll-mt-20 py-24 md:py-40 ${className}`}>
+    <section
+      id={id}
+      aria-labelledby={title ? headingId : undefined}
+      data-scene={scene ? "" : undefined}
+      className={`relative scroll-mt-20 py-24 md:py-40 ${className}`}
+    >
+      {scene && (
+        <>
+          <div aria-hidden="true" className="scene-bar scene-bar-top" />
+          <div aria-hidden="true" className="scene-bar scene-bar-bottom" />
+        </>
+      )}
       <div className="container-x">
+        {scene && (
+          <p aria-hidden="true" className="scene-slate">
+            <span style={{ "--n": `${slateText(scene).length}` } as React.CSSProperties}>{slateText(scene)}</span>
+          </p>
+        )}
         {(eyebrow || title || intro) && (
           <div className="mb-14 md:mb-24">
             {eyebrow && (
@@ -43,4 +61,8 @@ export function Section({ id, eyebrow, title, intro, children, className = "" }:
       </div>
     </section>
   );
+}
+
+function slateText(n: number) {
+  return `Sc. ${String(n).padStart(2, "0")} — Take 01`;
 }

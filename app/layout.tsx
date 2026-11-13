@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Cursor } from "@/components/Cursor";
 import { CookieNotice } from "@/components/CookieNotice";
+import { SceneObserver } from "@/components/SceneObserver";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <CookieNotice />
+        <SceneObserver />
       </body>
     </html>
   );

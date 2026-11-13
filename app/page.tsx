@@ -50,6 +50,7 @@ export default function Home() {
 
       <Section
         id="lavori"
+        scene={1}
         eyebrow="Capitolo 01 — Lavori selezionati"
         title="Lavori"
         intro="Siti, e-commerce e app, realizzati per attività reali."
@@ -59,6 +60,7 @@ export default function Home() {
 
       <Section
         id="servizi"
+        scene={2}
         eyebrow="Capitolo 02 — Servizi"
         title="Cosa facciamo"
         intro="Un solo studio per tutto quello che serve alla tua attività online."
@@ -69,6 +71,7 @@ export default function Home() {
 
       <Section
         id="metodo"
+        scene={3}
         eyebrow="Capitolo 03 — Metodo"
         title="La demo è *gratuita*."
         intro="Non ti chiediamo di fidarti di un preventivo. Ti facciamo vedere il risultato prima."
@@ -79,6 +82,7 @@ export default function Home() {
 
       <Section
         id="regia"
+        scene={4}
         eyebrow="Dietro le quinte"
         title="Dietro la *macchina da presa*."
         className="border-t border-line"
@@ -106,7 +110,7 @@ export default function Home() {
 
       <CTA />
 
-      <Section id="contatti" eyebrow="Capitolo 04 — Contatti" title="Parliamone" intro="Scrivici su WhatsApp o per email. Oppure compila il form: il messaggio è già pronto.">
+      <Section id="contatti" scene={5} eyebrow="Capitolo 04 — Contatti" title="Parliamone" intro="Scrivici su WhatsApp o per email. Oppure compila il form: il messaggio è già pronto.">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-10">
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">

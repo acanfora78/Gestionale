@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site, titolareLegale } from "@/data/site";
+import { servizi, site, titolareLegale } from "@/data/site";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -63,6 +63,39 @@ export function Footer() {
           documentare il lavoro svolto. Il sito usa solo strumenti tecnici, senza cookie di profilazione.
         </p>
       </nav>
+
+      {/* Titoli di coda: scorrono lentamente verso l'alto quando entrano nello schermo */}
+      <section aria-label="Titoli di coda" data-scene="" className="credits container-x mt-16 md:mt-24">
+        <div className="credits-roll mx-auto max-w-md text-center">
+          <p className="text-[11px] font-semibold tracking-[0.4em] uppercase">Un film di</p>
+          <p className="mt-2 font-display text-3xl font-bold text-paper uppercase md:text-4xl">FΛRGE STUDIO™</p>
+
+          <h2 className="mt-10 text-[11px] font-semibold tracking-[0.4em] uppercase">Regia</h2>
+          <p className="mt-2 text-base text-paper">{site.legale.titolare || site.nome}</p>
+
+          <h2 className="mt-8 text-[11px] font-semibold tracking-[0.4em] uppercase">Servizi</h2>
+          <ul className="mt-2 space-y-1 text-base text-paper">
+            {servizi.map((s) => (
+              <li key={s.titolo}>{s.titolo}</li>
+            ))}
+          </ul>
+
+          <h2 className="mt-8 text-[11px] font-semibold tracking-[0.4em] uppercase">Contatti</h2>
+          <ul className="mt-2 space-y-1 text-base text-paper">
+            <li>
+              <a href={`mailto:${site.contatti.email}`} className="hover:text-accent">
+                {site.contatti.email}
+              </a>
+            </li>
+            <li>
+              <a href={`tel:+${site.contatti.whatsapp}`} className="hover:text-accent">
+                {site.contatti.telefonoVisibile}
+              </a>
+            </li>
+            <li>{site.luogo}</li>
+          </ul>
+        </div>
+      </section>
 
       {/* Titolo di coda */}
       <div aria-hidden="true" className="container-x mt-16 select-none md:mt-24">
