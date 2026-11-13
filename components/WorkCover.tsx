@@ -67,6 +67,8 @@ export function WorkCover({
         <img
           src={work.logo}
           alt={`Logo ${work.nome}`}
+          loading="lazy"
+          decoding="async"
           className="absolute top-[14%] left-[7%] w-[56%] max-w-[520px] drop-shadow-[0_8px_30px_rgba(0,0,0,0.9)] sm:w-[44%] md:w-[38%]"
         />
       ) : (
