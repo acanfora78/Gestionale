@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { emailLink, site, whatsappLink } from "@/data/site";
 
@@ -61,6 +62,16 @@ export function ContactForm() {
       <label className="block">
         <span className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Messaggio</span>
         <textarea name="messaggio" rows={3} className={`${field} resize-none`} placeholder="Raccontaci in due righe cosa ti serve" />
+      </label>
+      <label className="flex items-start gap-3 text-sm text-muted">
+        <input type="checkbox" name="privacy" required className="mt-1 h-5 w-5 shrink-0 accent-[var(--color-accent)]" />
+        <span>
+          Ho letto l&apos;
+          <Link href="/privacy" className="text-paper underline underline-offset-4 hover:text-accent">
+            informativa privacy
+          </Link>{" "}
+          e chiedo di essere ricontattato per la demo gratuita.
+        </span>
       </label>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <button

@@ -18,9 +18,30 @@ export const site = {
     instagram: "",
   },
   piva: "06367880652",
-  // TODO: ragione sociale / titolare (per la privacy policy)
-  ragioneSociale: "TODO_RAGIONE_SOCIALE",
+  /**
+   * Dati legali, usati in footer, privacy, cookie e note legali.
+   * Finché un campo è vuoto non viene mostrato.
+   */
+  legale: {
+    // TODO: nome e cognome del titolare (ditta individuale) oppure ragione sociale completa
+    titolare: "",
+    // TODO: sede legale completa (via, numero, CAP, città, provincia)
+    sede: "",
+    // TODO: PEC, se c'è
+    pec: "",
+    // TODO (solo società): numero REA e capitale sociale, es. "REA SA-123456 · Cap. soc. € 10.000 i.v."
+    datiSocietari: "",
+    // Data dell'ultimo aggiornamento dei testi legali
+    aggiornamento: "13 novembre 2026",
+    // Dove è ospitato il sito. TODO: aggiornare se cambia hosting
+    hosting: "Vercel Inc. (USA)",
+  },
 } as const;
+
+/** Intestazione legale: titolare (se indicato) oppure il nome dello studio. */
+export function titolareLegale(): string {
+  return site.legale.titolare ? `${site.legale.titolare} — ${site.nome}` : site.nome;
+}
 
 export const whatsappMessaggio =
   "Ciao FARGE STUDIO, vorrei una demo gratuita per la mia attività.";

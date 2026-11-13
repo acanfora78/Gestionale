@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/data/site";
+import { site, titolareLegale } from "@/data/site";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -29,19 +29,39 @@ export function Footer() {
               {site.contatti.email}
             </a>
           </li>
-          <li>
-            <Link href="/privacy" className="hover:text-paper">
-              Privacy
-            </Link>
-          </li>
         </ul>
         <div className="space-y-1 md:text-right">
-          <p>P.IVA {site.piva}</p>
           <p>
-            © {year} {site.nome}
+            © {year} {titolareLegale()}
           </p>
+          {site.legale.sede && <p>{site.legale.sede}</p>}
+          <p>P.IVA {site.piva}</p>
+          {site.legale.datiSocietari && <p>{site.legale.datiSocietari}</p>}
+          {site.legale.pec && <p>PEC {site.legale.pec}</p>}
         </div>
       </div>
+
+      {/* Link legali */}
+      <nav aria-label="Informazioni legali" className="container-x mt-10 border-t border-line pt-6">
+        <ul className="flex flex-wrap gap-x-6 gap-y-3 text-xs tracking-wide uppercase">
+          {[
+            { href: "/privacy", label: "Privacy" },
+            { href: "/cookie", label: "Cookie" },
+            { href: "/note-legali", label: "Note legali" },
+            { href: "/accessibilita", label: "Accessibilità" },
+          ].map((l) => (
+            <li key={l.href}>
+              <Link href={l.href} className="hover:text-paper">
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 max-w-3xl text-xs leading-relaxed">
+          Marchi, loghi e contenuti dei lavori mostrati appartengono ai rispettivi titolari e sono riprodotti per
+          documentare il lavoro svolto. Il sito usa solo strumenti tecnici, senza cookie di profilazione.
+        </p>
+      </nav>
 
       {/* Titolo di coda */}
       <div aria-hidden="true" className="container-x mt-16 select-none md:mt-24">

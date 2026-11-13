@@ -7,6 +7,8 @@ import { Method } from "@/components/Method";
 import { Section } from "@/components/Section";
 import { Services } from "@/components/Services";
 import { WorkGrid } from "@/components/WorkGrid";
+import { WorkingCartoon } from "@/components/WorkingCartoon";
+import { Reveal } from "@/components/Reveal";
 import { emailLink, site, whatsappLink } from "@/data/site";
 import { getWorksOrdered } from "@/data/works";
 
@@ -73,6 +75,33 @@ export default function Home() {
         className="border-t border-line"
       >
         <Method />
+      </Section>
+
+      <Section
+        id="regia"
+        eyebrow="Dietro le quinte"
+        title="Dietro la *macchina da presa*."
+        className="border-t border-line"
+      >
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <Reveal>
+            <WorkingCartoon
+              uid="regia"
+              title="Illustrazione: il titolare di FARGE STUDIO al lavoro al portatile"
+              className="mx-auto w-full max-w-[520px]"
+            />
+          </Reveal>
+          <Reveal delay={0.15} className="space-y-6 text-lg text-muted md:text-xl">
+            <p>
+              Dietro <span className="text-paper">FΛRGE STUDIO</span> non c&apos;è un centralino: c&apos;è chi i progetti li
+              disegna e li costruisce, riga dopo riga.
+            </p>
+            <p>Parli direttamente con chi lavora al tuo sito, dalla prima demo alla messa online.</p>
+            <p className="font-display text-sm tracking-[0.25em] text-paper uppercase">
+              Scritto, diretto e sviluppato in Campania
+            </p>
+          </Reveal>
+        </div>
       </Section>
 
       <CTA />

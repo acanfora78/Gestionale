@@ -193,7 +193,7 @@ body::after {
   place-items: center;
   background: var(--color-ink);
   pointer-events: none;
-  animation: intro-out 0.9s cubic-bezier(0.76, 0, 0.24, 1) 2.5s both;
+  animation: intro-out 0.9s cubic-bezier(0.76, 0, 0.24, 1) 4.9s both;
 }
 html[data-intro-seen] .intro { display: none; }
 @keyframes intro-out {
@@ -259,23 +259,51 @@ html[data-intro-seen] .intro { display: none; }
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
-.intro-title {
+.intro-scene {
   position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  animation: intro-title 1s cubic-bezier(0.22, 1, 0.36, 1) 1.6s both;
+}
+.intro-scene svg {
+  width: min(78vmin, 460px);
+  height: auto;
+}
+.intro-title {
   text-align: center;
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.4em;
   font-size: 0.75rem;
   color: var(--color-muted);
-  animation: intro-title 1s cubic-bezier(0.22, 1, 0.36, 1) 1.6s both;
 }
 .intro-title strong {
   display: block;
-  margin-top: 1rem;
-  font-size: clamp(2rem, 9vw, 5rem);
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 9vw, 4.5rem);
   letter-spacing: -0.02em;
   color: var(--color-paper);
 }
+.intro-skip {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  pointer-events: auto;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+}
+.intro-skip:hover { border-color: var(--color-accent); color: var(--color-accent-hover); }
 @keyframes intro-title {
   from { opacity: 0; transform: scale(1.15); filter: blur(12px); }
   to { opacity: 1; transform: none; filter: none; }
@@ -539,4 +567,101 @@ html[data-intro-seen] .intro { display: none; }
   .letterbox-bottom {
     display: none;
   }
+}
+
+/* Testi delle pagine legali */
+.legal { color: rgb(255 255 255 / 0.85); font-size: 1.0625rem; line-height: 1.7; }
+.legal h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: var(--color-paper);
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+}
+.legal h3 { font-weight: 600; color: var(--color-paper); margin: 1.75rem 0 0.5rem; }
+.legal p, .legal ul, .legal address, .legal table { margin-bottom: 1rem; }
+.legal ul { list-style: square; padding-left: 1.25rem; }
+.legal li { margin-bottom: 0.4rem; }
+.legal li::marker { color: var(--color-accent); }
+.legal a { text-decoration: underline; text-underline-offset: 4px; }
+.legal a:hover { color: var(--color-accent-hover); }
+.legal strong { color: var(--color-paper); }
+.legal table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.legal th, .legal td { text-align: left; vertical-align: top; padding: 0.75rem 0.75rem 0.75rem 0; border-bottom: 1px solid var(--color-line); }
+.legal th { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-muted); }
+.legal .table-wrap { overflow-x: auto; }
+
+/* ───────── Cartone animato (WorkingCartoon) ───────── */
+.c-head, .c-blink, .c-eyes, .c-hand, .c-brows, .c-clap, .c-float, .c-steam, .c-logo, .c-screenlight, .c-ticks {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.c-head { animation: c-nod 3.2s ease-in-out infinite; }
+@keyframes c-nod {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(3px) rotate(-1.2deg); }
+}
+.c-eyes { animation: c-scan 2.6s ease-in-out infinite; }
+@keyframes c-scan {
+  0%, 100% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+}
+.c-blink { animation: c-blink 4.2s infinite; }
+@keyframes c-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.08); }
+}
+.c-brows { animation: c-brows 5.5s ease-in-out infinite; }
+@keyframes c-brows {
+  0%, 70%, 100% { transform: translateY(0); }
+  78%, 88% { transform: translateY(-5px); }
+}
+.c-hand { animation: c-type 0.18s ease-in-out infinite alternate; }
+@keyframes c-type {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+.c-ticks { animation: c-ticks 0.36s steps(2) infinite; }
+@keyframes c-ticks {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+.c-float { opacity: 0; animation: c-float 4s ease-out infinite; }
+@keyframes c-float {
+  0% { opacity: 0; transform: translateY(40px) scale(0.7); }
+  20% { opacity: 1; transform: translateY(10px) scale(1); }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-36px) scale(1); }
+}
+.c-steam { opacity: 0; animation: c-steam 2.6s ease-out infinite; }
+@keyframes c-steam {
+  0% { opacity: 0; transform: translateY(8px); }
+  35% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-14px); }
+}
+.c-logo { animation: c-logo 2.2s ease-in-out infinite; }
+@keyframes c-logo {
+  0%, 100% { opacity: 0.75; filter: drop-shadow(0 0 2px rgb(225 6 0 / 0.6)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 12px rgb(225 6 0 / 0.95)); }
+}
+.c-screenlight { animation: c-screenlight 3s steps(6) infinite; }
+@keyframes c-screenlight {
+  0%, 100% { opacity: 0.9; }
+  30% { opacity: 0.6; }
+  60% { opacity: 1; }
+}
+.c-clap { transform-origin: left bottom; animation: c-clap 6s ease-in-out infinite; }
+@keyframes c-clap {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  86% { transform: rotate(-24deg); }
+  90% { transform: rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .c-head, .c-blink, .c-eyes, .c-hand, .c-brows, .c-clap, .c-float, .c-steam, .c-logo, .c-screenlight, .c-ticks { animation: none; }
+  .c-float, .c-steam { opacity: 1; }
+  .c-ticks { opacity: 0; }
 }

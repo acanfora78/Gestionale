@@ -1,5 +1,6 @@
 import { Button } from "./Button";
 import { Timecode } from "./Timecode";
+import { WorkingCartoon } from "./WorkingCartoon";
 
 const righe = ["Prima", "lo vedi.", "Poi decidi"];
 
@@ -80,6 +81,12 @@ export function Hero() {
               Richiedi una demo gratuita
             </Button>
           </div>
+
+          {/* Il titolare al lavoro, in versione cartone animato (solo schermi grandi) */}
+          <WorkingCartoon
+            uid="hero"
+            className="fade-in pointer-events-none absolute top-[2%] right-0 hidden w-[30vw] max-w-[440px] xl:block [--d:1.2s]"
+          />
 
           {/* Badge rotante */}
           <a

@@ -7,7 +7,7 @@
  */
 
 export type Immagine = {
-  /** Percorso dentro /public, es. "/works/vs-shop/desktop.jpg" */
+  /** Percorso dentro /public, es. "/works/sudditalia/desktop.jpg" */
   src: string;
   alt: string;
   tipo: "desktop" | "mobile";
@@ -33,6 +33,11 @@ export type Work = {
   /** Cosa abbiamo fatto, elenco puntato nel case study. */
   cosaAbbiamoFatto: string[];
   immagini: Immagine[];
+  /**
+   * Di quante schermate scorrere per il secondo screenshot (default 1).
+   * Serve a inquadrare una sezione precisa del sito. Facoltativo.
+   */
+  secondaVista?: { desktop?: number; mobile?: number };
   /**
    * Logo del cliente (SVG chiaro, in /public). Facoltativo.
    * Se il lavoro non ha screenshot, la copertina mostra il logo.
@@ -65,28 +70,32 @@ function screenshots(slug: string, nome: string): Immagine[] {
 
 export const works: Work[] = [
   {
-    slug: "vs-shop",
-    nome: "VS Shop",
-    settore: "Moda donna",
-    url: "https://vs-shop.it",
-    piattaforma: "Shopify",
-    servizi: ["E-commerce Shopify", "Web Design"],
+    slug: "osteria-il-tormentone",
+    nome: "Osteria Il Tormentone",
+    settore: "Ristorazione",
+    url: "https://osteriatormentone.it",
+    // TODO: confermare la tecnologia usata
+    piattaforma: "Sito su misura",
+    servizi: ["Web Design & Development", "Prenotazioni online"],
+    // TODO_DESCRIZIONE: testi proposti guardando il sito live, da confermare
     descrizioneBreve:
-      "Boutique di abbigliamento donna a Scafati (SA): dal negozio fisico allo shop online.",
+      "Ristorante a conduzione familiare a Scafati: un sito che porta dritto alla prenotazione del tavolo.",
     descrizione: [
-      "VS Shop è una boutique di abbigliamento donna a Scafati (SA), con negozio fisico e una clientela che la segue da vicino.",
-      "Abbiamo portato il negozio online con un e-commerce Shopify che apre con un video in hero, organizza il catalogo per categorie e accetta il pagamento alla consegna, con spedizione in tutta Italia.",
+      "Osteria Il Tormentone è un ristorante a conduzione familiare a Scafati, con una cucina di tradizione napoletana.",
+      "Abbiamo realizzato un sito su misura che racconta la storia della famiglia e accompagna il cliente fino alla prenotazione: un modulo semplice che si conclude su WhatsApp, direttamente con il ristorante.",
     ],
     obiettivo:
-      "Vendere online oltre Scafati, mantenendo lo stile della boutique e un acquisto semplice anche per chi preferisce pagare alla consegna.",
+      "Trasformare chi cerca il ristorante online in un tavolo prenotato, in pochi tocchi dal telefono.",
     cosaAbbiamoFatto: [
-      "E-commerce su Shopify",
-      "Hero con video",
-      "Catalogo organizzato per categorie",
-      "Pagamento alla consegna",
-      "Spedizione in tutta Italia",
+      "Design e sviluppo su misura",
+      "Prenotazione del tavolo online",
+      "Conferma diretta su WhatsApp",
+      "Sezione sulla storia del ristorante",
+      "Contatti, telefono e indicazioni",
     ],
-    immagini: screenshots("vs-shop", "VS Shop"),
+    // Seconda immagine sulla sezione prenotazione
+    secondaVista: { desktop: 1.62, mobile: 3.1 },
+    immagini: screenshots("osteria-il-tormentone", "Osteria Il Tormentone"),
     inEvidenza: true,
   },
   {

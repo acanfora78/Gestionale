@@ -44,7 +44,7 @@ Qualsiasi campo testuale che inizia con `TODO` non viene mostrato nel case study
 
 ```bash
 npm run screenshots              # tutti i lavori
-npm run screenshots vs-shop      # solo uno (o più slug separati da spazio)
+npm run screenshots sudditalia      # solo uno (o più slug separati da spazio)
 ```
 
 Per ogni lavoro con URL lo script salva in `public/works/[slug]/`:
@@ -60,11 +60,20 @@ Email, WhatsApp, telefono e P.IVA sono in `data/site.ts`: cambiandoli lì si agg
 
 Il form non ha un server: con "Invia su WhatsApp" o "Invia per email" apre WhatsApp o l'app email di chi lo compila, con il messaggio già scritto e indirizzato a te. Chi scrive deve solo premere invia. Per ricevere le richieste in automatico, senza quel passaggio, serve un servizio email (es. Resend) collegato in `components/ContactForm.tsx`.
 
+## Pagine legali
+
+`/privacy`, `/cookie`, `/note-legali`, `/accessibilita` (in `app/`), con impaginazione comune in `components/Legal.tsx`.
+I dati di chi gestisce il sito stanno in `data/site.ts` → `legale`: **titolare, sede, PEC** sono da compilare (finché sono vuoti non compaiono).
+
+I testi descrivono il sito com'è oggi: nessun analytics, nessun cookie di profilazione, font ospitati sul sito, form che non invia dati a un server. Per questo c'è solo un avviso informativo (`components/CookieNotice.tsx`) e non un banner di consenso.
+**Se aggiungi analytics, pixel, mappe/video incorporati, newsletter o un form con invio diretto, aggiorna prima privacy e cookie policy e metti un banner di consenso.**
+Sono testi standard, non una consulenza legale: falli rivedere da un professionista.
+
 ## Animazioni
 
 Quasi tutte sono in CSS (`app/globals.css`, sezioni "Cinema" e "Animazioni extra"); con "riduci movimento" attivo nel sistema si spengono.
 
-- Intro 3-2-1 della home: `components/Intro.tsx`, una volta per sessione (script in `app/layout.tsx`).
+- Intro 3-2-1 della home con il cartone animato del titolare al lavoro: `components/Intro.tsx` e `components/WorkingCartoon.tsx`, una volta per sessione (script in `app/layout.tsx`), con pulsante "Salta intro".
 - Sipario tra le pagine: `app/template.tsx`.
 - Cursore, luce che segue il mouse: `components/Cursor.tsx`. Sui lavori il cursore mostra "Guarda" (`data-cursor="view"`).
 - Pulsanti magnetici: `components/Magnetic.tsx`. Card inclinabili: `components/Tilt.tsx`.

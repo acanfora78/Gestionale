@@ -2,7 +2,7 @@
  * Genera gli screenshot di ogni lavoro in data/works.ts.
  *
  *   npm run screenshots            -> tutti i lavori
- *   npm run screenshots vs-shop    -> solo i lavori indicati (slug)
+ *   npm run screenshots sudditalia   -> solo i lavori indicati (slug)
  *
  * Salva in public/works/[slug]/:
  *   desktop.jpg, desktop-2.jpg (1440px)   mobile.jpg, mobile-2.jpg (390px)
@@ -55,7 +55,8 @@ async function shoot(browser: Browser, work: Work, kind: keyof typeof viewports,
     await page.screenshot({ path: path.join(dir, `${kind}.jpg`), type: "jpeg", quality: 82 });
 
     // Seconda vista: una schermata più in basso.
-    const h = viewports[kind].viewport.height;
+    // Di default una schermata più in basso; ogni lavoro può indicare quante (secondaVista).
+    const h = Math.round(viewports[kind].viewport.height * (work.secondaVista?.[kind] ?? 1));
     await page.mouse.wheel(0, h);
     await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), h);
     await page.waitForTimeout(2500);
